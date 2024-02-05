@@ -22,18 +22,32 @@ const initialState: SideMenuState = {
       pathname: "/",
     },
     {
-      icon: "MessageCircle",
-      title: "Messages",
-      pathname: "/sent-messages",
+      icon: "Box",
+      title: "Query",
+      subMenu: [
+        {
+          icon: "Database",
+          pathname: "/all-query",
+          title: "All Query",
+          // ignore: true,
+        },
+        {
+          icon: "Shovel",
+          pathname: "#",
+          title: "Resolved Query",
+          // ignore: true,
+        },
+        {
+          icon: "Loader",
+          pathname: "#",
+          title: "Pending Query",
+          // ignore: true,
+        },
+      ],
     },
     {
-      icon: "MessageSquare",
-      title: "Chats",
-      pathname: "/chats",
-    },
-    {
-      icon: "Upload",
-      title: "CSV Upload",
+      icon: "PlusSquare",
+      title: "Add Query",
       pathname: "#",
     },
   ],
