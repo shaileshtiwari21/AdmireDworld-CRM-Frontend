@@ -3,25 +3,224 @@ import clsx from "clsx";
 import { useState, useRef } from "react";
 import fakerData from "../../utils/faker";
 import Button from "../../base-components/Button";
-import Pagination from "../../base-components/Pagination";
-import { FormInput, FormSelect } from "../../base-components/Form";
+import { FormInput, FormLabel, FormSelect } from "../../base-components/Form";
 import Lucide from "../../base-components/Lucide";
-import Tippy from "../../base-components/Tippy";
 import { Dialog, Menu } from "../../base-components/Headless";
 import Table from "../../base-components/Table";
+import { Preview } from "../../base-components/PreviewComponent";
+import { NavLink } from "react-router-dom";
 
 function Main() {
   const [deleteConfirmationModal, setDeleteConfirmationModal] = useState(false);
   const deleteButtonRef = useRef(null);
 
+  const [headerFooterModalPreview, setHeaderFooterModalPreview] =
+    useState(false);
+
+  const sendButtonRef = useRef(null);
+
   return (
     <>
+      <div className="col-span-12 lg:col-span-6 ">
+        {/* BEGIN: Header & Footer Modal */}
+        <Preview>
+          <Dialog
+            size="xl"
+            open={headerFooterModalPreview}
+            onClose={() => {
+              setHeaderFooterModalPreview(false);
+            }}
+            initialFocus={sendButtonRef}
+          >
+            <Dialog.Panel>
+              <Dialog.Title>
+                <h2 className="mr-auto text-base font-medium">Add Query</h2>
+              </Dialog.Title>
+              <Dialog.Description className="grid grid-cols-12 gap-4 gap-y-3">
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-1">Name</FormLabel>
+                  <FormInput
+                    id="modal-form-1"
+                    type="text"
+                    placeholder="example@gmail.com"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-1">Email</FormLabel>
+                  <FormInput
+                    id="modal-form-1"
+                    type="text"
+                    placeholder="example@gmail.com"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-1">Alternate Email</FormLabel>
+                  <FormInput
+                    id="modal-form-1"
+                    type="text"
+                    placeholder="example@gmail.com"
+                  />
+                </div>
+
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-1">Mobile No</FormLabel>
+                  <FormInput type="phone" placeholder="example@gmail.com" />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-1">
+                    Alternate Mobile No
+                  </FormLabel>
+                  <FormInput
+                    id="modal-form-1"
+                    type="phone"
+                    placeholder="example@gmail.com"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-2">Destination</FormLabel>
+                  <FormInput
+                    id="modal-form-2"
+                    type="text"
+                    placeholder="example@gmail.com"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-3">City</FormLabel>
+                  <FormInput
+                    id="modal-form-3"
+                    type="text"
+                    placeholder="Important Meeting"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  Travel Date
+                  <FormLabel htmlFor="modal-form-4"></FormLabel>
+                  <FormInput
+                    id="modal-form-4"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">No Of Days</FormLabel>
+                  <FormInput
+                    id="modal-form-5"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">No Of Adults</FormLabel>
+                  <FormInput
+                    id="modal-form-5"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">No Of Children</FormLabel>
+                  <FormInput
+                    id="modal-form-5"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">No Of Infants</FormLabel>
+                  <FormInput
+                    id="modal-form-5"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">Budget</FormLabel>
+                  <FormInput
+                    id="modal-form-5"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">Hotel Categorys</FormLabel>
+                  <FormSelect id="modal-form-6">
+                    <option>10</option>
+                    {/* <option>25</option> */}
+                    <option>35</option>
+                    <option>50</option>
+                  </FormSelect>
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-6">Lead Type</FormLabel>
+                  <FormSelect id="modal-form-6">
+                    <option>10</option>
+                    <option>25</option>
+                    <option>35</option>
+                    <option>50</option>
+                  </FormSelect>
+                </div>
+
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-6">Lead Sourse</FormLabel>
+                  <FormSelect id="modal-form-6">
+                    <option>10</option>
+                    <option>25</option>
+                    <option>35</option>
+                    <option>50</option>
+                  </FormSelect>
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-6">Payment Status</FormLabel>
+                  <FormSelect id="modal-form-6">
+                    <option>10</option>
+                    <option>25</option>
+                    <option>35</option>
+                    <option>50</option>
+                  </FormSelect>
+                </div>
+                <div className="col-span-12 sm:col-span-6">
+                  <FormLabel htmlFor="modal-form-5">Comment</FormLabel>
+                  <FormInput
+                    id="modal-form-5"
+                    type="text"
+                    placeholder="Job, Work, Documentation"
+                  />
+                </div>
+              </Dialog.Description>
+              <Dialog.Footer>
+                <Button
+                  type="button"
+                  variant="outline-secondary"
+                  onClick={() => {
+                    setHeaderFooterModalPreview(false);
+                  }}
+                  className="w-20 mr-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="primary"
+                  type="button"
+                  className="w-20"
+                  ref={sendButtonRef}
+                >
+                  Send
+                </Button>
+              </Dialog.Footer>
+            </Dialog.Panel>
+          </Dialog>
+          {/* END: Modal Content */}
+        </Preview>
+        {/* END: Header & Footer Modal */}
+      </div>
       <h2 className="mt-10 text-lg font-medium intro-y">Categories</h2>
       <div className="grid grid-cols-12 gap-6 mt-5">
         <div className="flex flex-wrap items-center col-span-12 mt-2 intro-y sm:flex-nowrap">
-          <Button variant="primary" className="mr-2 shadow-md">
-            Add New Query
-          </Button>
+          <NavLink to={"/add-query"}>
+            <Button variant="primary" className="mr-2 shadow-md">
+              Add New Query
+            </Button>
+          </NavLink>
           <Menu>
             <Menu.Button as={Button} className="px-2 !box">
               <span className="flex items-center justify-center w-5 h-5">

@@ -3,6 +3,7 @@ import SideMenu from "../layouts/SideMenu";
 import Dashboard from "../pages/Dashboard";
 import AllQuery from "../pages/Query/AllQuery";
 import ErrorPage from "../pages/ErrorPage";
+import AddQuery from "../pages/Query/Add-Query";
 
 function Router() {
   const routes = [
@@ -17,6 +18,10 @@ function Router() {
         {
           path: "/all-query",
           element: <AllQuery />,
+        },
+        {
+          path: "/add-query",
+          element: <AddQuery />,
         },
 
         {
