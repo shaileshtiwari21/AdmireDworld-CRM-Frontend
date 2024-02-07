@@ -4,9 +4,19 @@ import Dashboard from "../pages/Dashboard";
 import AllQuery from "../pages/Query/AllQuery";
 import ErrorPage from "../pages/ErrorPage";
 import AddQuery from "../pages/Query/Add-Query";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 function Router() {
   const routes = [
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
     {
       path: "/",
       element: <SideMenu />,

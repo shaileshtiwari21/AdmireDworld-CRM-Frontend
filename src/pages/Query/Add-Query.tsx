@@ -29,7 +29,7 @@ function AddQuery() {
   return (
     <>
       <div className="flex items-center mt-8 intro-y">
-        <h2 className="mr-auto text-lg font-medium">Update Profile</h2>
+        <h2 className="mr-auto text-lg font-medium">Add Client Details</h2>
       </div>
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12 lg:col-span-8 2xl:col-span-12">

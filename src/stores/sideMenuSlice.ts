@@ -48,7 +48,7 @@ const initialState: SideMenuState = {
     {
       icon: "PlusSquare",
       title: "Add Query",
-      pathname: "#",
+      pathname: "/add-query",
     },
   ],
 };
