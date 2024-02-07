@@ -15,8 +15,8 @@ const FormInput = forwardRef((props: FormInputProps, ref: FormInputRef) => {
   const inputGroup = useContext(inputGroupContext);
   const { formInputSize, rounded, ...computedProps } = props;
   return (
-    <input 
-    onChange={props.onChange}
+    <input
+      onChange={props.onChange}
       {...computedProps}
       ref={ref}
       className={twMerge([
