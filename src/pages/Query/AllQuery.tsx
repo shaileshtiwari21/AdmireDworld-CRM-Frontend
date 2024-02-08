@@ -3,7 +3,12 @@ import clsx from "clsx";
 import { useState, useRef } from "react";
 import fakerData from "../../utils/faker";
 import Button from "../../base-components/Button";
-import { FormInput, FormLabel, FormSelect } from "../../base-components/Form";
+import {
+  FormCheck,
+  FormInput,
+  FormLabel,
+  FormSelect,
+} from "../../base-components/Form";
 import Lucide from "../../base-components/Lucide";
 import { Dialog, Menu } from "../../base-components/Headless";
 import Table from "../../base-components/Table";
@@ -37,13 +42,24 @@ function Main() {
             icon="Search"
             className="absolute inset-y-0 right-0 w-4 h-4 my-auto mr-3"
           />
-          <div className=" mx-auto 
+          <div
+            className=" mx-auto 
           
           
-          text-slate-500">Showing All Query</div>
+          text-slate-500"
+          >
+            Showing All Query
+          </div>
           <div className="w-full mt-3 sm:w-auto sm:mt-0 sm:ml-auto md:ml-0">
             <div className="relative  text-slate-500">
-              <Button variant="primary" className="ml-2 shadow-md">
+              <Button
+                variant="primary"
+                className="ml-2 shadow-md"
+                onClick={(event: React.MouseEvent) => {
+                  event.preventDefault();
+                  setHeaderFooterModalPreview(true);
+                }}
+              >
                 Update Status
               </Button>
             </div>
@@ -54,6 +70,9 @@ function Main() {
           <Table className="border-spacing-y-[10px] border-separate -mt-2">
             <Table.Thead>
               <Table.Tr>
+                <Table.Th className="border-b-0 whitespace-nowrap">
+                  <FormCheck.Input type="checkbox" />
+                </Table.Th>
                 <Table.Th className="border-b-0 whitespace-nowrap">
                   USER ID
                 </Table.Th>
@@ -84,6 +103,9 @@ function Main() {
             <Table.Tbody>
               {_.take(fakerData, 9).map((faker, fakerKey) => (
                 <Table.Tr key={fakerKey} className="intro-x">
+                  <Table.Td className="first:rounded-l-md last:rounded-r-md w-10 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                    <FormCheck.Input type="checkbox" />
+                  </Table.Td>
                   <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
                     <a className="flex items-center " href="#">
                       {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
@@ -206,7 +228,76 @@ function Main() {
           </div>
         </Dialog.Panel>
       </Dialog>
+
       {/* END: Delete Confirmation Modal */}
+      {/*payment status update model  */}
+      {/* BEGIN: Modal Toggle */}
+      <div className="text-center">
+        <Button
+          as="a"
+          href="#"
+          variant="primary"
+          onClick={(event: React.MouseEvent) => {
+            event.preventDefault();
+            setHeaderFooterModalPreview(true);
+          }}
+        >
+          Show Modal
+        </Button>
+      </div>
+      {/* END: Modal Toggle */}
+      {/* BEGIN: Modal Content */}
+      <Dialog
+        open={headerFooterModalPreview}
+        onClose={() => {
+          setHeaderFooterModalPreview(false);
+        }}
+        initialFocus={sendButtonRef}
+      >
+        <Dialog.Panel>
+          <Dialog.Title>
+            <h2 className="mr-auto text-base font-medium">
+              Update Payment Status
+            </h2>
+          </Dialog.Title>
+          <Dialog.Description className="grid grid-cols-12 gap-4 gap-y-3">
+            <div className="col-span-12  mt-3">
+              <FormLabel htmlFor="modal-form-3">Payment Status</FormLabel>
+              <FormSelect
+                id="modal-form-3"
+                // {...register("paymentStatus")}
+              >
+                <option value={""}>Select Payemnt Status</option>
+                <option value={"pending"}>Pending</option>
+                <option value={"completed"}>Completed</option>
+                <option value={"failed"}>Failed</option>
+                <option value={"refunded"}>Refunded</option>
+              </FormSelect>
+            </div>
+          </Dialog.Description>
+          <Dialog.Footer>
+            <Button
+              type="button"
+              variant="outline-secondary"
+              onClick={() => {
+                setHeaderFooterModalPreview(false);
+              }}
+              className="w-20 mr-1"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              type="button"
+              className="w-20"
+              ref={sendButtonRef}
+            >
+              Update
+            </Button>
+          </Dialog.Footer>
+        </Dialog.Panel>
+      </Dialog>
+      {/* END: Modal Content */}
     </>
   );
 }
