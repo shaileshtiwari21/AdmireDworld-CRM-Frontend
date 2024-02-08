@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AnyAction } from "@reduxjs/toolkit";
-function AddQuery() {
+function EditQuery() {
   // yup form validation
   // const schema = yup.object({
   //   email: yup.string().email().required(),
@@ -29,7 +29,7 @@ function AddQuery() {
   return (
     <>
       <div className="flex items-center mt-8 intro-y">
-        <h2 className="mr-auto text-lg font-medium">Add Client Details</h2>
+        <h2 className="mr-auto text-lg font-medium">Edit Client Details</h2>
       </div>
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12 lg:col-span-8 2xl:col-span-12">
@@ -221,4 +221,4 @@ function AddQuery() {
   );
 }
 
-export default AddQuery;
+export default EditQuery;

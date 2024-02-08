@@ -1,11 +1,12 @@
 import { useRoutes } from "react-router-dom";
 import SideMenu from "../layouts/SideMenu";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import AllQuery from "../pages/Query/AllQuery";
 import ErrorPage from "../pages/ErrorPage";
 import AddQuery from "../pages/Query/Add-Query";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import EditQuery from "../pages/Query/Edit-Query";
 
 function Router() {
   const routes = [
@@ -32,6 +33,10 @@ function Router() {
         {
           path: "/add-query",
           element: <AddQuery />,
+        },
+        {
+          path: "/edit-query",
+          element: <EditQuery />,
         },
 
         {
