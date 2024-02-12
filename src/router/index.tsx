@@ -7,6 +7,7 @@ import AllQuery from "../pages/Query/AllQuery";
 import ErrorPage from "../pages/ErrorPage";
 import AddQuery from "../pages/Query/Add-Query";
 import EditQuery from "../pages/Query/Edit-Query";
+import QueryDetails from "../pages/Query/QueryDetails";
 
 function Router() {
   const routes = [
@@ -37,6 +38,10 @@ function Router() {
         {
           path: "/edit-query",
           element: <EditQuery />,
+        },
+        {
+          path: "/query-details",
+          element: <QueryDetails />,
         },
 
         {

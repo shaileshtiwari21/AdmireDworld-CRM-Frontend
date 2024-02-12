@@ -9,15 +9,36 @@ import {
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AnyAction } from "@reduxjs/toolkit";
 function AddQuery() {
   // yup form validation
-  // const schema = yup.object({
-  //   email: yup.string().email().required(),
-  //   password: yup.string().min(8).max(32).required(),
-  // });
-  const { register, handleSubmit } = useForm<any>({
-    // resolver: yupResolver(schema),
+  const schema = yup.object({
+    email: yup.string().email().required(),
+    userName: yup.string().required(),
+
+    mobileNo: yup
+      .string()
+      .matches(/^[0-9]{10}$/, "Invalid mobile number")
+      .required(),
+
+    destination: yup.string().required(),
+    city: yup.string().required(),
+    travelDate: yup.string().required(),
+    noOfDays: yup.string().required(),
+    noOfAdults: yup.string().required(),
+    noOfChildren: yup.string().required(),
+    noOfInfants: yup.string().required(),
+    budget: yup.string().required(),
+    hotelCategory: yup.string().required(),
+    leadSourse: yup.string().required(),
+    paymentStatus: yup.string().required(),
+    comment: yup.string().required(),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<any>({
+    resolver: yupResolver(schema),
   });
   const onSubmitHandler = async (data: any) => {
     console.log(data);
@@ -55,6 +76,11 @@ function AddQuery() {
                       placeholder="Enter Email"
                       {...register("email")}
                     />
+                    {errors.email && (
+                      <p className="mt-2 text-danger ">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 ">
                     <FormLabel htmlFor="modal-form-1">
@@ -75,6 +101,11 @@ function AddQuery() {
                       placeholder="Enter Mobile Number"
                       {...register("mobileNo")}
                     />
+                    {errors.mobileNo && (
+                      <p className="mt-2 text-danger ">
+                        {errors.mobileNo.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="col-span-12 sm:col-span-3 mt-3 ">
@@ -96,6 +127,11 @@ function AddQuery() {
                       placeholder="Enter Destination"
                       {...register("destination")}
                     />
+                    {errors.destination && (
+                      <p className="mt-2 text-danger ">
+                        {errors.destination.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-3">City</FormLabel>
@@ -105,10 +141,18 @@ function AddQuery() {
                       placeholder="Enter City"
                       {...register("city")}
                     />
+                    {errors.city && (
+                      <p className="mt-2 text-danger ">{errors.city.message}</p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-4"> Travel Date</FormLabel>
                     <FormInput type="date" {...register("travelDate")} />
+                    {errors.travelDate && (
+                      <p className="mt-2 text-danger ">
+                        {errors.travelDate.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-5">No Of Days</FormLabel>
@@ -118,6 +162,11 @@ function AddQuery() {
                       placeholder="Enter Number Of Days"
                       {...register("noOfDays")}
                     />
+                    {errors.noOfDays && (
+                      <p className="mt-2 text-danger ">
+                        {errors.noOfDays.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-5">No Of Adults</FormLabel>
@@ -127,6 +176,11 @@ function AddQuery() {
                       placeholder="Enter No Of Adults"
                       {...register("noOfAdults")}
                     />
+                    {errors.noOfAdults && (
+                      <p className="mt-2 text-danger ">
+                        {errors.noOfAdults.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-5">No Of Children</FormLabel>
@@ -136,6 +190,11 @@ function AddQuery() {
                       placeholder="Enter No Of Children"
                       {...register("noOfChildren")}
                     />
+                    {errors.noOfChildren && (
+                      <p className="mt-2 text-danger ">
+                        {errors.noOfChildren.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-5">No Of Infants</FormLabel>
@@ -145,6 +204,11 @@ function AddQuery() {
                       placeholder="Enter No Of Infants"
                       {...register("noOfInfants")}
                     />
+                    {errors.noOfInfants && (
+                      <p className="mt-2 text-danger ">
+                        {errors.noOfInfants.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-5">Budget</FormLabel>
@@ -154,6 +218,11 @@ function AddQuery() {
                       placeholder="Enter Budget"
                       {...register("budget")}
                     />
+                    {errors.budget && (
+                      <p className="mt-2 text-danger ">
+                        {errors.budget.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-5">
@@ -171,6 +240,11 @@ function AddQuery() {
                       <option>4 Star ⭐⭐⭐⭐</option>
                       <option>5 Star ⭐⭐⭐⭐</option>
                     </FormSelect>
+                    {errors.hotelCategory && (
+                      <p className="mt-2 text-danger ">
+                        {errors.hotelCategory.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="col-span-12 sm:col-span-3 mt-3">
@@ -181,6 +255,11 @@ function AddQuery() {
                       <option>Instagram</option>
                       <option>Other</option>
                     </FormSelect>
+                    {errors.leadSourse && (
+                      <p className="mt-2 text-danger ">
+                        {errors.leadSourse.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-3 mt-3">
                     <FormLabel htmlFor="modal-form-3">Payment Status</FormLabel>
@@ -194,6 +273,11 @@ function AddQuery() {
                       <option value={"failed"}>Failed</option>
                       <option value={"refunded"}>Refunded</option>
                     </FormSelect>
+                    {errors.paymentStatus && (
+                      <p className="mt-2 text-danger ">
+                        {errors.paymentStatus.message}
+                      </p>
+                    )}
                   </div>
                   <div className="col-span-12 sm:col-span-12 mt-3">
                     <FormLabel htmlFor="modal-form-5">Comment</FormLabel>
@@ -204,6 +288,11 @@ function AddQuery() {
                       placeholder="Give A commnet"
                       {...register("comment")}
                     />
+                    {errors.comment && (
+                      <p className="mt-2 text-danger ">
+                        {errors.comment.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex justify-center items-center mt-4">

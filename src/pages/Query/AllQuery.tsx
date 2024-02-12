@@ -35,44 +35,22 @@ function Main() {
           </NavLink>
           <FormInput
             type="text"
-            className="w-48 pr-10 !box ml-2"
+            className="w-48 pr-10 !box ml-auto"
             placeholder="Search..."
           />
           <Lucide
             icon="Search"
             className="absolute inset-y-0 right-0 w-4 h-4 my-auto mr-3"
           />
-          <div
-            className=" mx-auto 
-          
-          
-          text-slate-500"
-          >
-            Showing All Query
-          </div>
-          <div className="w-full mt-3 sm:w-auto sm:mt-0 sm:ml-auto md:ml-0">
-            <div className="relative  text-slate-500">
-              <Button
-                variant="primary"
-                className="ml-2 shadow-md"
-                onClick={(event: React.MouseEvent) => {
-                  event.preventDefault();
-                  setHeaderFooterModalPreview(true);
-                }}
-              >
-                Update Status
-              </Button>
-            </div>
-          </div>
         </div>
         {/* BEGIN: Data List */}
         <div className="col-span-12 overflow-x-auto intro-y overflow-visible">
           <Table className="border-spacing-y-[10px] border-separate -mt-2">
             <Table.Thead>
               <Table.Tr>
-                <Table.Th className="border-b-0 whitespace-nowrap">
+                {/* <Table.Th className="border-b-0 whitespace-nowrap">
                   <FormCheck.Input type="checkbox" />
-                </Table.Th>
+                </Table.Th> */}
                 <Table.Th className="border-b-0 whitespace-nowrap">
                   USER ID
                 </Table.Th>
@@ -102,84 +80,98 @@ function Main() {
             </Table.Thead>
             <Table.Tbody>
               {_.take(fakerData, 9).map((faker, fakerKey) => (
-                <Table.Tr key={fakerKey} className="intro-x">
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md w-10 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <FormCheck.Input type="checkbox" />
-                  </Table.Td>
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <a className="flex items-center " href="#">
-                      {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
-                      1234567890
-                    </a>
-                  </Table.Td>
-
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <a href="" className="font-medium whitespace-nowrap">
-                      {faker.categories[0].name}
-                    </a>
-                    <div className="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                      Tags: {faker.categories[0].tags}
-                    </div>
-                  </Table.Td>
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <a className="flex items-center " href="#">
-                      {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
-                      1234567890
-                    </a>
-                  </Table.Td>
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <a className="flex items-center " href="#">
-                      <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" />
-                      abcd@gmail.com
-                    </a>
-                  </Table.Td>
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <a className="flex items-center " href="#">
-                      {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
-                      4 star ⭐⭐⭐⭐
-                    </a>
-                  </Table.Td>
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md w-40 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <div
-                      className={clsx([
-                        "flex items-center justify-center",
-                        { "text-success": faker.trueFalse[0] },
-                        { "text-danger": !faker.trueFalse[0] },
-                      ])}
-                    >
-                      <Lucide icon="CheckSquare" className="w-4 h-4 mr-2" />
-                      {faker.trueFalse[0] ? "Active" : "Inactive"}{" "}
-                    </div>
-                  </Table.Td>
-
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
-                    <a className="flex items-center " href="#">
-                      {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
-                      Shailesh
-                    </a>
-                  </Table.Td>
-                  <Table.Td className="first:rounded-l-md last:rounded-r-md w-56 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b] py-0 relative before:block before:w-px before:h-8 before:bg-slate-200 before:absolute before:left-0 before:inset-y-0 before:my-auto before:dark:bg-darkmode-400">
-                    <div className="flex items-center justify-center">
-                      <NavLink
-                        className="flex items-center mr-3"
-                        to="/edit-query"
-                      >
-                        <Lucide icon="CheckSquare" className="w-4 h-4 mr-1" />
-                        Edit
-                      </NavLink>
-                      <a
-                        className="flex items-center text-danger"
-                        href="#"
-                        onClick={(event) => {
-                          event.preventDefault();
-                          setDeleteConfirmationModal(true);
-                        }}
-                      >
-                        <Lucide icon="Trash2" className="w-4 h-4 mr-1" /> Delete
+                <>
+                  <Table.Tr key={fakerKey} className="intro-x">
+                    {/* <Table.Td className="first:rounded-l-md last:rounded-r-md w-10 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <FormCheck.Input type="checkbox" />
+                    </Table.Td> */}
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <a className="flex items-center " href="#">
+                        {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
+                        1234567890
                       </a>
-                    </div>
-                  </Table.Td>
-                </Table.Tr>
+                    </Table.Td>
+
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <NavLink
+                        to="/query-details"
+                        className=" whitespace-nowrap"
+                      >
+                        <p className="font-medium">
+                          {faker.categories[0].name}
+                        </p>
+
+                        <div className="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                          Tags: {faker.categories[0].tags}
+                        </div>
+                      </NavLink>
+                    </Table.Td>
+
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <a className="flex items-center " href="#">
+                        {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
+                        1234567890
+                      </a>
+                    </Table.Td>
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <a className="flex items-center " href="#">
+                        <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" />
+                        abcd@gmail.com
+                      </a>
+                    </Table.Td>
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <a className="flex items-center " href="#">
+                        {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
+                        4 star ⭐⭐⭐⭐
+                      </a>
+                    </Table.Td>
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md w-40 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <div
+                        onClick={(event: React.MouseEvent) => {
+                          event.preventDefault();
+                          setHeaderFooterModalPreview(true);
+                        }}
+                        className={clsx([
+                          "flex items-center justify-center cursor-pointer",
+                          { "text-success": faker.trueFalse[0] },
+                          { "text-danger": !faker.trueFalse[0] },
+                        ])}
+                      >
+                        {faker.trueFalse[0] ? "Active" : "Inactive"}{" "}
+                        <Lucide icon="ChevronsDown" className="w-4 h-4 ml-2" />
+                      </div>
+                    </Table.Td>
+
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md text-center bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b]">
+                      <a className="flex items-center " href="#">
+                        {/* <Lucide icon="ExternalLink" className="w-4 h-4 mr-2" /> */}
+                        Shailesh
+                      </a>
+                    </Table.Td>
+                    <Table.Td className="first:rounded-l-md last:rounded-r-md w-56 bg-white border-b-0 dark:bg-darkmode-600 shadow-[20px_3px_20px_#0000000b] py-0 relative before:block before:w-px before:h-8 before:bg-slate-200 before:absolute before:left-0 before:inset-y-0 before:my-auto before:dark:bg-darkmode-400">
+                      <div className="flex items-center justify-center">
+                        <NavLink
+                          className="flex items-center mr-3"
+                          to="/edit-query"
+                        >
+                          <Lucide icon="CheckSquare" className="w-4 h-4 mr-1" />
+                          Edit
+                        </NavLink>
+                        <a
+                          className="flex items-center text-danger"
+                          href="#"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            setDeleteConfirmationModal(true);
+                          }}
+                        >
+                          <Lucide icon="Trash2" className="w-4 h-4 mr-1" />{" "}
+                          Delete
+                        </a>
+                      </div>
+                    </Table.Td>
+                  </Table.Tr>
+                </>
               ))}
             </Table.Tbody>
           </Table>
@@ -232,19 +224,7 @@ function Main() {
       {/* END: Delete Confirmation Modal */}
       {/*payment status update model  */}
       {/* BEGIN: Modal Toggle */}
-      <div className="text-center">
-        <Button
-          as="a"
-          href="#"
-          variant="primary"
-          onClick={(event: React.MouseEvent) => {
-            event.preventDefault();
-            setHeaderFooterModalPreview(true);
-          }}
-        >
-          Show Modal
-        </Button>
-      </div>
+
       {/* END: Modal Toggle */}
       {/* BEGIN: Modal Content */}
       <Dialog
