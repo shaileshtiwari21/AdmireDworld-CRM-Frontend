@@ -41,7 +41,7 @@ function Main(props: { layout?: "side-menu" | "simple-menu" | "top-menu" }) {
             ])}
           >
             <img
-              alt="Enigma Tailwind HTML Admin Template"
+              alt="AdmireDworld Tailwind HTML Admin Template"
               className="w-6"
               src={logoUrl}
             />
@@ -53,7 +53,7 @@ function Main(props: { layout?: "side-menu" | "simple-menu" | "top-menu" }) {
               ])}
             >
               {" "}
-              Enigma{" "}
+              AdmireDworld{" "}
             </span>
           </Link>
           {/* END: Logo */}
